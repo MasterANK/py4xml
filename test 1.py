@@ -1,4 +1,4 @@
-import main
+import py_xml
 
 def test_main():
     inp = int(input("""Enter 1 to show all record
@@ -15,7 +15,7 @@ Enetr Choice: """))
 
 def open_xml():
     f = open("XML 1.xml","r")
-    data = main.read_xml(f)
+    data = py_xml.read_xml(f)
     return data
 
 def read_all():
