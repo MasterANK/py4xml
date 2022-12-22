@@ -11,7 +11,7 @@ class xml_reader:
     def element_stacker(self,name):
         self.element_stack.append(name)
     
-    def add_dict(self,element):                             #
+    def add_dict(self,element):                             #test change
         self.main_dict[element] = {}
 
 
