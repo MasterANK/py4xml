@@ -20,9 +20,9 @@ class xml_reader:
 
 def main():
     with open("XML 1.xml","r") as f:
-        readit(f)
+        read_xml(f)
 
-def readit(f):
+def read_xml(f):
     data = f.readlines()
     xml_file = xml_reader()
 
@@ -55,10 +55,9 @@ def readit(f):
         raise XML_Syntax_Error(xml_file.root_element + " is not closed properly")
     if not element_flag:
         raise XML_Syntax_Error(element + " is not closed properly")
+    
+    return xml_file
 
-    print(xml_file.root_element)
-    print(xml_file.element_stack)
-    print(xml_file.main_dict)
 
 if __name__ == "__main__":
     main()
