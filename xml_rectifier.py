@@ -1,3 +1,6 @@
 
-class Closing_Error(Exception):
+class XML_Syntax_Error(Exception):
+    pass
+
+class XML_Definition_Error(Exception):
     pass
