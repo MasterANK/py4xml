@@ -24,7 +24,8 @@ XML stands for extensible markdown language, An XML file is a file which is used
 ![alt text](https://github.com/MasterANK/py_xml/blob/main/XML%20tree.jpg "XML Tree")
 
 ## Example File:
-``` <bookstore>
+``` 
+<bookstore>
   <book>
     <title>Everyday Italian</title>
     <author>Giada De Laurentiis</author>
@@ -37,7 +38,7 @@ XML stands for extensible markdown language, An XML file is a file which is used
     <year>2000</year>
     <price>30.00</price>
   </book2>
-</CATALOG>
+</bookstore>
 ```
 
 ## Uses of XML:
@@ -52,4 +53,53 @@ XML stands for extensible markdown language, An XML file is a file which is used
 
 
 #
-# ***Descrption***
+# ***What is Py_XML?***
+Py_xml is the module created in order to interpret these XML file in python using python just like csv module which interpret CSV or pickle modules which interpret Binary files. Py_xml has the ability to read and write an .xml file. Py_xml can also convert the xml file into csv file or SQL table. 
+
+#
+# ***Installation***
+The Project file can be found on Github: [Py_XML Github](https://github.com/MasterANK/py_xml/tree/main)
+
+#
+# ***Reading an XML File***
+Py_xml has a function called **read_xml()** which requires *file_object as a parameter* and *returns an xml_reader class object* which contains all the extracted data from the given xml file.
+
+### Example:
+```
+import py_xml
+
+# The xml file to read is "xml 1.xml"
+f = open("xml 1.xml","r") #Opening the file in read mode
+
+# read_xml() function will read the file and extract the data
+xml_file = py_xml.read_xml(f) # it takes file_object and return xml object
+
+# Now with the help of multiple functions inside the xml object in xml_file we can extract the required data as shown in below example
+
+```
+## 1. Getting reading the Root Element:
+By accessing the **root_element** variable in the xml file object returned by read_xml() function. It will return the **root_element**
+```
+print(xml_file.root_element)
+#It will return the root element
+```
+
+## 2. Getting list of all Element:
+By accessing the **element_stack** variable in the xml file object returned by read_xml() function. It will return the **element_stack**
+
+```
+print(xml_file.element_stack)
+#It will return the list of element present in the xml file
+```
+
+## 3. Getting the Dictionary of elements in xml file
+By accessing the **main_dict** variable in the xml file object returned by read_xml() function. It will return the **nested dictionary** of element where key will be elements and its value will be another dictionary where the key this time is sub element and its value will be the value of the sub element.
+
+Sample Structure of the nested dictionary:
+
+{element1 : {sub_element1 : value, sub_element2 : value}, element2 : {sub_element1: value}}
+
+```
+print(xml_file.main_dict)
+#It will return the nested dictionary of elements as shown above
+```
