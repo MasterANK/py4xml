@@ -38,7 +38,6 @@ def read_xml(f):
             xml_file.root_element = a.group(1)
 
         elif a := re.fullmatch(r"<(\w+)>",i.strip()):           #Element Check
-            print(a)
             if header_flag != False:
                 raise XML_Definition_Error("Root Element not defined")
 
@@ -57,7 +56,6 @@ def read_xml(f):
             xml_file.add_disct_value(element,a.group(1),a.group(2))
         
         elif a := re.fullmatch(r"</(\w+)>",i.strip()):          #Closing Root_Element,Element Check
-            print(a.group(),element)
             if a.group(1) == xml_file.root_element:
                 header_flag = True
             if a.group(1) == element:
