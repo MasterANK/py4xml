@@ -1,4 +1,5 @@
 import re
+import csv
 
 class XML_Syntax_Error(Exception):
     pass
@@ -24,8 +25,10 @@ class xml_reader:
 
 
 def main():
-    with open("XML 1.xml","r") as f:
-        read_xml(f)
+    dic = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":90,"Defence":90,"Speed": 0} }
+    with open("Tests/XML 2.xml","w") as f:
+        dict_write_xml("cards",dic,f)
+
 
 def read_xml(f):
     data = f.readlines()
@@ -68,6 +71,22 @@ def read_xml(f):
         raise XML_Syntax_Error(element + " is not closed properly")
     
     return xml_file
+
+
+def dict_write_xml(root_element ,data : dict,  write_f : object):
+    write_f.write("<"+root_element+">\n")
+    for i in data:
+        write_f.write("  <"+i+">\n")
+        element_flag = False
+        for j in data[i]:
+            exp = "    <"+j+">"+str(data[i][j])+"</"+j+">\n"
+            write_f.write(exp)
+        else:
+            if element_flag == False:
+                element_flag == True
+                write_f.write("  </"+i+">\n")
+    else:
+        write_f.write("</"+root_element+">\n")
 
 
 if __name__ == "__main__":

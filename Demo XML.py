@@ -14,7 +14,7 @@ Enetr Choice: """))
         pass
 
 def open_xml():
-    f = open("XML 1.xml","r")
+    f = open("Tests/XML 2.xml","r")
     data = py_xml.read_xml(f)
     return data
 
