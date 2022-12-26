@@ -1,8 +1,9 @@
 
 # **Py_XML**
-
+**Under-Construction*
+### Author: Ankit Aggarwal (@MasterANK)
 ### Language Used : Python
-#
+### Github Link : [Py_XML Github](https://github.com/MasterANK/py_xml/tree/main)
 #
 # ***Introduction to XML***
 XML stands for extensible markdown language, An XML file is a file which is used to store data in both computer and human readable. XML is a markup language much like HTML but was designed to store data, transport data and was designed to be self-descriptive. XML is a World Wide Web Consortium (W3C) recommendation while World Wide Web Consortium (W3C) is an organization whose mission is to lead the World Wide Web to its full potential by developing protocols and guidelines that ensure the long-term growth of the Web.
@@ -103,3 +104,48 @@ Sample Structure of the nested dictionary:
 print(xml_file.main_dict)
 #It will return the nested dictionary of elements as shown above
 ```
+
+#
+# ***Writing Dictionary in XML File***
+Py_xml has a function called **dict_write_xml()** and it has 3 required parameters. The first parameter is for the *root_element* which will commonly be in string format. The secound parameter is *data* or the elements and sub_element which should be provided in the nested dictionary format as described below. The third and last parameter is the *write_f* or file_object where everything is supposed to be written. This functions dosen't return anything.
+
+Sample Structure of the nested dictionary:
+
+{element1 : {sub_element1 : value, sub_element2 : value}, element2 : {sub_element1: value}}
+
+*Note - The file must be opened in  write mode only. If you wish to append data there is another function for that.
+
+### Example:
+```
+import py_xml
+
+root_element = "Cards" 
+
+#Nested dictionary of Sample Data
+data = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
+
+#The xml file to write is "xml 2.xml"
+f = open("xml 2.xml","w") #Opening the file in write mode
+
+# dict_write_xml() will write the data in file
+dict_write_xml(root_element,data,f)
+
+```
+### Output in File:
+```
+<cards>
+  <Pika>
+    <HP>100</HP>
+    <Defence>50</Defence>
+    <Speed>80</Speed>
+  </Pika>
+  <Snorlax>
+    <HP>100</HP>
+    <Defence>100</Defence>
+    <Speed>0</Speed>
+  </Snorlax>
+</cards>
+```
+
+
+
