@@ -13,11 +13,15 @@ class xml_reader:
         self.element_stack = []                             #Stack which contains name of Elements
         self.main_dict = {}                                 #Nested dict with element->{Sub_element}
 
+    def find_element(self,element):                         #Finds out the element and returns the dictionary associated with it
+        for i in self.main_dict:
+            if i == element:
+                return self.main_dict[i]
 
     def element_stacker(self,name):                         #A list of all the elements present 
         self.element_stack.append(name)
     
-    def add_dict(self,element):                             #Nested Dictionary as Element -> {Sub_elements}
+    def add_dict(self,element):                             #Nested Dictionary keys as Element -> {Sub_elements}
         self.main_dict[element] = {}
 
     def add_disct_value(self,element,key,value):            #Adding Values to the nested dictionary
