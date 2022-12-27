@@ -9,4 +9,14 @@
     <Defence>100</Defence>
     <Speed>0</Speed>
   </Snorlax>
+  <Arceus>
+    <HP>100</HP>
+    <Defence>100</Defence>
+    <Speed>100</Speed>
+  </Arceus>
+  <Gratina>
+    <HP>99</HP>
+    <Defence>99</Defence>
+    <Speed>99</Speed>
+  </Gratina>
 </cards>

@@ -29,9 +29,10 @@ class xml_reader:
 
 
 def main():
-    dic = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
-    with open("Tests/XML 2.xml","w") as f:
-        dict_write_xml("cards",dic,f)
+    dic1 = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
+    dic = {"Arceus" : {"HP": 100,"Defence" : 100,"Speed": 100 }, "Gratina":{"HP":99,"Defence":99,"Speed": 99} }
+    with open("Tests/XML 2.xml","r+") as f:
+        extend_xml(dic,f)
 
 
 def read_xml(f):
@@ -91,6 +92,17 @@ def dict_write_xml(root_element ,data : dict,  write_f : object):
                 write_f.write("  </"+str(i)+">\n")
     else:
         write_f.write("</"+str(root_element)+">\n")
+
+
+def extend_xml(data, write_f):
+    file = read_xml(write_f)
+    write_f.seek(0)
+    file_data = file.main_dict
+    file_data.update(data)
+    print(file_data)
+    print(file.root_element)
+    dict_write_xml(file.root_element,file_data,write_f)
+
 
 
 if __name__ == "__main__":
