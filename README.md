@@ -3,7 +3,7 @@
 **Under-Construction*
 ### Author: Ankit Aggarwal (@MasterANK)
 ### Language Used : Python
-### Github Link : [Py4XML Github](https://github.com/MasterANK/py_xml/tree/main)
+### Github Link : [Py4XML Github](https://github.com/MasterANK/py4xml/tree/main)
 #
 # ***Introduction to XML***
 XML stands for extensible markdown language, An XML file is a file which is used to store data in both computer and human readable. XML is a markup language much like HTML but was designed to store data, transport data and was designed to be self-descriptive. XML is a World Wide Web Consortium (W3C) recommendation while World Wide Web Consortium (W3C) is an organization whose mission is to lead the World Wide Web to its full potential by developing protocols and guidelines that ensure the long-term growth of the Web.
@@ -22,7 +22,7 @@ XML stands for extensible markdown language, An XML file is a file which is used
 |HTML document size is relatively small.|XML document size is relatively large as the approach of formatting|
 
 ## Structure of XML File
-![alt text](https://github.com/MasterANK/py_xml/blob/main/XML%20tree.jpg "XML Tree")
+![alt text](https://github.com/MasterANK/py4xml/blob/main/XML%20tree.jpg "XML Tree")
 
 ## Example File:
 ``` 
@@ -59,7 +59,7 @@ Py4xml is the module created in order to interpret these XML file in python usin
 
 #
 # ***Installation***
-The Project file can be found on Github: [Py4XML Github](https://github.com/MasterANK/py_xml/tree/main)
+The Project file can be found on Github: [Py4XML Github](https://github.com/MasterANK/py4xml/tree/main)
 
 #
 # ***Reading an XML File***
