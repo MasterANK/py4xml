@@ -1,0 +1,12 @@
+<cards>
+  <Pika>
+    <HP>100</HP>
+    <Defence>50</Defence>
+    <Speed>80</Speed>
+  </Pika>
+  <Snorlax>
+    <HP>100</HP>
+    <Defence>100</Defence>
+    <Speed>0</Speed>
+  </Snorlax>
+</cards>
