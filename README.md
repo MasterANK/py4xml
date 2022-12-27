@@ -1,9 +1,9 @@
 
-# **Py_XML**
+# **Py4XML**
 **Under-Construction*
 ### Author: Ankit Aggarwal (@MasterANK)
 ### Language Used : Python
-### Github Link : [Py_XML Github](https://github.com/MasterANK/py_xml/tree/main)
+### Github Link : [Py4XML Github](https://github.com/MasterANK/py_xml/tree/main)
 #
 # ***Introduction to XML***
 XML stands for extensible markdown language, An XML file is a file which is used to store data in both computer and human readable. XML is a markup language much like HTML but was designed to store data, transport data and was designed to be self-descriptive. XML is a World Wide Web Consortium (W3C) recommendation while World Wide Web Consortium (W3C) is an organization whose mission is to lead the World Wide Web to its full potential by developing protocols and guidelines that ensure the long-term growth of the Web.
@@ -54,26 +54,26 @@ XML stands for extensible markdown language, An XML file is a file which is used
 
 
 #
-# ***What is Py_XML?***
-Py_xml is the module created in order to interpret these XML file in python using python just like csv module which interpret CSV or pickle modules which interpret Binary files. Py_xml has the ability to read and write an .xml file. Py_xml can also convert the xml file into csv file or SQL table. 
+# ***What is Py4XML?***
+Py4xml is the module created in order to interpret these XML file in python using python just like csv module which interpret CSV or pickle modules which interpret Binary files. Py4xml has the ability to read and write an .xml file. Py4xml can also convert the xml file into csv file or SQL table. 
 
 #
 # ***Installation***
-The Project file can be found on Github: [Py_XML Github](https://github.com/MasterANK/py_xml/tree/main)
+The Project file can be found on Github: [Py4XML Github](https://github.com/MasterANK/py_xml/tree/main)
 
 #
 # ***Reading an XML File***
-Py_xml has a function called **read_xml()** which requires *file_object as a parameter* and *returns an xml_reader class object* which contains all the extracted data from the given xml file.
+Py4xml has a function called **read_xml()** which requires *file_object as a parameter* and *returns an xml_reader class object* which contains all the extracted data from the given xml file.
 
 ### Example:
 ```
-import py_xml
+import py4xml
 
 # The xml file to read is "xml 1.xml"
 f = open("xml 1.xml","r") #Opening the file in read mode
 
 # read_xml() function will read the file and extract the data
-xml_file = py_xml.read_xml(f) # it takes file_object and return xml object
+xml_file = py4xml.read_xml(f) # it takes file_object and return xml object
 
 # Now with the help of multiple functions inside the xml object in xml_file we can extract the required data as shown in below example
 
@@ -107,7 +107,7 @@ print(xml_file.main_dict)
 
 #
 # ***Writing Dictionary in XML File***
-Py_xml has a function called **dict_write_xml()** and it has 3 required parameters. The first parameter is for the *root_element* which will commonly be in string format. The secound parameter is *data* or the elements and sub_element which should be provided in the nested dictionary format as described below. The third and last parameter is the *write_f* or file_object where everything is supposed to be written. This functions dosen't return anything.
+Py4xml has a function called **dict_write_xml()** and it has 3 required parameters. The first parameter is for the *root_element* which will commonly be in string format. The secound parameter is *data* or the elements and sub_element which should be provided in the nested dictionary format as described below. The third and last parameter is the *write_f* or file_object where everything is supposed to be written. This functions dosen't return anything.
 
 Sample Structure of the nested dictionary:
 
@@ -117,7 +117,7 @@ Sample Structure of the nested dictionary:
 
 ### Example:
 ```
-import py_xml
+import py4xml
 
 root_element = "Cards" 
 
