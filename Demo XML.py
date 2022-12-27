@@ -1,4 +1,4 @@
-import py_xml
+import py4xml
 
 def test_main():
     inp = int(input("""Enter 1 to show all record
@@ -16,7 +16,7 @@ Enetr Choice: """))
 
 def open_xml():
     f = open("Tests/XML 1.xml","r")
-    data = py_xml.read_xml(f)
+    data = py4xml.read_xml(f)
     return data
 
 def read_all():
