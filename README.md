@@ -102,8 +102,17 @@ Sample Structure of the nested dictionary:
 
 ```
 print(xml_file.main_dict)
-#It will return the nested dictionary of elements as shown above
+#It will return the nested dictionary of elements of structure as shown above
 ```
+
+## 4.  Getting the Dictionary of selected element in xml file
+By accessing the **find_element()** function in the xml file object returned by read_xml() function. It requires one required parameter which is the element you need to find in the xml file and it will return the **dictionary** of sub element of the supplied element.
+
+```
+print(xml_file.find_element("element"))
+#It will return the dictionary of sub elements of the given element 
+```
+
 
 #
 # ***Writing Dictionary in XML File***
