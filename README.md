@@ -113,6 +113,33 @@ print(xml_file.find_element("element"))
 #It will return the dictionary of sub elements of the given element 
 ```
 
+#
+# ***Reading an XML File with Attributes***
+Although it is not recomended but xml file can sometimes have an attribute defined in the element tag. As shown in the example below-
+```
+<messages>
+  <note id="501">
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body>Don't forget me this weekend!</body>
+  </note>
+  <note id="502">
+    <to>Jani</to>
+    <from>Tove</from>
+    <heading>Re: Reminder</heading>
+    <body>I will not</body>
+  </note>
+</messages>
+```
+in the given example, it can we concluded that id is category and is defined as *\<element category="Value">* 
+
+While iterating over such xml files with py4xml, the structure of main dictionary is slightly changed to accompany the category tag. The keys of the ***main_dict*** will be changed as ***element_value*** where value is the value of the category and a new sub_element will be added for category as ***\<Category_category\>Value\</Category_category\>*** 
+
+Sample New Structure of the nested dictionary:
+
+{element1_value : {category_category1 : value, sub_element1 : value, sub_element2 : value}, element2_value : {category_category1 : value, sub_element1: value}}
+
 
 #
 # ***Writing Dictionary in XML File***
