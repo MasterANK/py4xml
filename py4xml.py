@@ -24,21 +24,22 @@ class xml_reader:
     def add_dict(self,element):                             #Nested Dictionary keys as Element -> {Sub_elements}
         self.main_dict[element] = {}
 
-    def add_disct_value(self,element,key,value):            #Adding Values to the nested dictionary
+    def add_dict_value(self,element,key,value):            #Adding Values to the nested dictionary
         self.main_dict[element][key] = value
 
 
 def main():
     dic1 = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
     dic = {"Arceus" : {"HP": 100,"Defence" : 100,"Speed": 100 }, "Gratina":{"HP":99,"Defence":99,"Speed": 99} }
-    with open("Tests/XML 2.xml","r+") as f:
-        extend_xml(dic,f)
+    with open("Tests/XML 3.xml","r+") as f:
+        read_xml(f)
 
 
 def read_xml(f):
     data = f.readlines()
     xml_file = xml_reader()
     element_flag = True
+    attribute_flag = False
 
     for i in data:
         if a := re.fullmatch(r"<(\w+)>",i.strip("\n")):         #Init Header Check
@@ -57,16 +58,37 @@ def read_xml(f):
             element = a.group(1)
             xml_file.element_stacker(element)
             xml_file.add_dict(element)
+        
+        elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):
+            if header_flag != False:
+                raise XML_Definition_Error("Root Element not defined")
+
+            if element_flag:                                    #To resolve the Bug where tag closing error never occurs
+                element_flag = False
+            else:
+                raise XML_Syntax_Error(element+" is not closed properly")
+
+            attribute_flag = True    
+            value =  a.group(3)
+            element = str(a.group(1))+"_"+str(value) ; category = 'category'+'_'+str(a.group(2)) 
+            xml_file.element_stacker(element)
+            xml_file.add_dict(element)
+            xml_file.add_dict_value(element,category,value)
+
 
         elif a:= re.fullmatch(r"<(\w+)>([^<>]+)</(\w+)>",i.strip()):        #Sub_elements Check + Closing
             if a.group(1) != a.group(3):
                 raise XML_Syntax_Error(a.group(1)+" is not closed properly")
-            xml_file.add_disct_value(element,a.group(1),a.group(2))
+            xml_file.add_dict_value(element,a.group(1),a.group(2))
         
         elif a := re.fullmatch(r"</(\w+)>",i.strip()):          #Closing Root_Element,Element Check
+            if attribute_flag:
+                if str(a.group(1))+"_"+str(value) == element:
+                    attribute_flag = False
+
             if a.group(1) == xml_file.root_element:
                 header_flag = True
-            if a.group(1) == element:
+            if a.group(1) == element or not attribute_flag:
                 element_flag = True 
 
 
