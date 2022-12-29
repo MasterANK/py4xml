@@ -184,6 +184,30 @@ dict_write_xml(root_element,data,f)
 ```
 
 #
+# ***Extending an XML File***
+Py4xml have a function called ***extend_xml()*** which can be used to add data to the xml file. It has two required parameters. 
+The first parameter is *data* which will be in dictionary format and will contain the data that needed to be appended to the file. The secound parameter is *write_f* which will be the xml file where data needed to be added.
+
+*Note: the xml file must be opened in "r+" mode only
+
+### Example:
+```
+# Data that needed to be added
+data = {"Arceus":{"HP":100,"Defence":100,"Speed":100},
+"Gratina":{"HP":99,"Defence":99,"Speed":99}}
+
+#XML file to add data to and it must be opened in "r+"
+write_f = open("Tests\XML 2.xml","r+")
+
+#Calling extend_xml function
+py4xml.extend_xml(data,write_f)
+
+#File Closing
+write_f.close()
+```
+
+
+#
 # ***Converting CSV to XML file***
 py4xml have a function called **csv_to_xml()** and it has four required parameter. This function is used to convert a csv file into an xml file.
 The first parameter is *root_element* which will accept the string to be written as root_element of the xml file. The secound parameter is *csv_f* which will be the csv file which will the hold data that needed to be converted. The third parameter is *key* which will be the column name and the value of the columnms will be used for elements tag. The fourth and last parameter is *xml_f* and it will be the xml file in which data should be written.
@@ -191,7 +215,7 @@ The first parameter is *root_element* which will accept the string to be written
 *Note- The key should be unique so that two element tags would not conflict with each other. 
 The csv file must be opened in read mode and xml file must be opend in write mode. 
 
-Example:
+### Example:
 
 csv file (File Path:Tests\csv 1.csv):
 ```
@@ -256,7 +280,7 @@ The first parameter is *xml_f* which will be the xml file for input data. The se
 
 *Note- xml file must be opened in read mode. csv file must be opened in write mode and newline must be empty string to avoid the empty row bug of csv module.
 
-Example:
+### Example:
 
 XML file (File Path:Tests\XML 4.xml):
 ```
