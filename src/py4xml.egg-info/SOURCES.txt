@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/py4xml/__init__.py
+src/py4xml/py4xml.py
+src/py4xml.egg-info/PKG-INFO
+src/py4xml.egg-info/SOURCES.txt
+src/py4xml.egg-info/dependency_links.txt
+src/py4xml.egg-info/top_level.txt
