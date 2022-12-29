@@ -1,4 +1,11 @@
-import py4xml
+'''
+Note:- If you have pip installed the py4xml, Then change the import statement to "import py4xml"
+Else if you have forked it from github then leave the import statement or change it accordingly with the py4xml.py file path
+'''
+try:
+    import py4xml
+except :
+    import src.py4xml.py4xml as py4xml
 
 def test_main():
     inp = int(input("""Enter 1 to show all record.
