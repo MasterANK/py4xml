@@ -1,4 +1,4 @@
-<student_data>
+<Student_Data>
   <Alice>
     <id>1</id>
     <name>Alice</name>
@@ -20,4 +20,4 @@
     <height>68</height>
     <weight>120.0</weight>
   </Bob>
-</student_data>
+</Student_Data>
