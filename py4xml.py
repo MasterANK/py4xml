@@ -123,8 +123,6 @@ def extend_xml(data, write_f):      #Extend an extensible file
     write_f.seek(0)
     file_data = file.main_dict
     file_data.update(data)
-    print(file_data)
-    print(file.root_element)
     dict_write_xml(file.root_element,file_data,write_f)
 
 
