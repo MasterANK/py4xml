@@ -31,8 +31,10 @@ class xml_reader:
 def main():
     dic1 = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
     dic = {"Arceus" : {"HP": 100,"Defence" : 100,"Speed": 100 }, "Gratina":{"HP":99,"Defence":99,"Speed": 99} }
-    with open("Tests/XML 3.xml","r+") as f:
-        read_xml(f)
+    with open("Tests\csv 1.csv","r+") as f:
+        fxml = open("Tests\XML 4.xml","w")
+        csv_to_xml("student_data",f,"name",fxml)
+        fxml.close()
 
 
 def read_xml(f):
@@ -126,6 +128,14 @@ def extend_xml(data, write_f):      #Extend an extensible file
     dict_write_xml(file.root_element,file_data,write_f)
 
 
+def csv_to_xml(root_element,csv_f,key,xml_f):
+    csv_data = csv.DictReader(csv_f)
+    data = {}
+    for i in csv_data:
+        for j in i:
+            if j == str(key):
+                data[i[j]] = i
+    dict_write_xml(root_element,data,xml_f)
 
 
 if __name__ == "__main__":
