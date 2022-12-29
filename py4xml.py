@@ -59,7 +59,7 @@ def read_xml(f):
             xml_file.element_stacker(element)
             xml_file.add_dict(element)
         
-        elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):
+        elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):      #Element with attributes check
             if header_flag != False:
                 raise XML_Definition_Error("Root Element not defined")
 
@@ -100,7 +100,7 @@ def read_xml(f):
     return xml_file
 
 
-def dict_write_xml(root_element ,data : dict,  write_f : object):
+def dict_write_xml(root_element ,data : dict,  write_f : object):       #Takes dictionary and write data to xml file
     write_f.write("<"+str(root_element)+">\n")
     for i in data:
         write_f.write("  <"+str(i)+">\n")
@@ -116,7 +116,7 @@ def dict_write_xml(root_element ,data : dict,  write_f : object):
         write_f.write("</"+str(root_element)+">\n")
 
 
-def extend_xml(data, write_f):
+def extend_xml(data, write_f):      #Extend an extensible file
     file = read_xml(write_f)
     write_f.seek(0)
     file_data = file.main_dict
@@ -124,6 +124,7 @@ def extend_xml(data, write_f):
     print(file_data)
     print(file.root_element)
     dict_write_xml(file.root_element,file_data,write_f)
+
 
 
 
