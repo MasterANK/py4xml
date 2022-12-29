@@ -31,9 +31,9 @@ class xml_reader:
 def main():
     dic1 = {"Pika" : {"HP": 100,"Defence" : 50,"Speed": 80 }, "Snorlax":{"HP":100,"Defence":100,"Speed": 0} }
     dic = {"Arceus" : {"HP": 100,"Defence" : 100,"Speed": 100 }, "Gratina":{"HP":99,"Defence":99,"Speed": 99} }
-    with open("Tests\csv 1.csv","r+") as f:
-        fxml = open("Tests\XML 4.xml","w")
-        csv_to_xml("student_data",f,"name",fxml)
+    with open("Tests\csv 1.csv","w",newline="") as f:
+        fxml = open("Tests\XML 4.xml","r")
+        xml_to_csv(fxml,f,"name")
         fxml.close()
 
 
@@ -128,7 +128,7 @@ def extend_xml(data, write_f):      #Extend an extensible file
     dict_write_xml(file.root_element,file_data,write_f)
 
 
-def csv_to_xml(root_element,csv_f,key,xml_f):       #Convert CSV -> Dict
+def csv_to_xml(root_element,csv_f,key,xml_f):       #Convert CSV -> Dict -> XML
     csv_data = csv.DictReader(csv_f)
     data = {}
     for i in csv_data:
@@ -136,6 +136,26 @@ def csv_to_xml(root_element,csv_f,key,xml_f):       #Convert CSV -> Dict
             if j == str(key):
                 data[i[j]] = i
     dict_write_xml(root_element,data,xml_f)
+
+
+def xml_to_csv(xml_f,csv_f,elementcol = None):      #Convert XML -> Dict -> CSV
+    xml_obj = read_xml(xml_f)
+    xml_data = xml_obj.main_dict
+    elements = xml_data[xml_obj.element_stack[0]].keys()
+    elements = list(elements)
+    elementcol_flag = False
+
+    if elementcol != None and elementcol not in elements:
+        elementcol_flag = True
+        elements.insert(0,elementcol)
+    
+    csvwriter = csv.DictWriter(csv_f,elements)
+    csvwriter.writeheader()
+
+    for i in xml_data:
+        if elementcol_flag:
+            xml_data[i][elementcol] = i
+        csvwriter.writerow(xml_data[i])
 
 
 if __name__ == "__main__":
