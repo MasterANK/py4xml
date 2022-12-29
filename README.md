@@ -149,7 +149,7 @@ Sample Structure of the nested dictionary:
 
 {element1 : {sub_element1 : value, sub_element2 : value}, element2 : {sub_element1: value}}
 
-*Note - The file must be opened in  write mode only. If you wish to append data there is another function for that.
+*Note - The file must be opened in write mode only. If you wish to append data there is another function for that.
 
 ### Example:
 ```
@@ -183,5 +183,64 @@ dict_write_xml(root_element,data,f)
 </cards>
 ```
 
+#
+# ***Converting CSV to XML file***
+py4xml have a function called **csv_to_xml()** and it has four required parameter. This function is used to covert a csv file into an xml file.
+The first parameter is *root_element* which will accept the string to be written as root_element of the xml file. The secound parameter is *csv_f* which will be the csv file which will the hold data that needed to be converted. The third parameter is *key* which will be the column name and the value of the columnms will be used for elements tag. The fourth and last parameter is *xml_f* and it will be the xml file in which data should be written.
 
+*Note- The key should be unique so that two element tags would not conflict with each other. 
+The csv file must be opened in read mode and xml file must be opend in write mode. 
 
+Example:
+
+csv file (File Path:Tests\csv 1.csv):
+```
+id,name,age,height,weight
+1,Alice,20,62,120.6
+2,Freddie,21,74,190.6
+3,Bob,17,68,120.0
+```
+Code-
+```
+#CSV file in read mode
+csv_f = open("Tests\csv 1.csv","r")
+
+#XML file in write mode
+xml_f = open("Tests\XML 4.xml","w")
+
+#Root_element for xml file
+root_element = "Student_Data"
+
+#"name" in csv file can be used as key as it is unique
+key = "name"          
+
+#Calling the csv to xml function
+py4xml.csv_to_xml(root_element,csv_f,key,xml_f)
+```
+
+Output XML file (File Path:Tests\XML 4.xml ):
+```
+<Student_Data>
+  <Alice>
+    <id>1</id>
+    <name>Alice</name>
+    <age>20</age>
+    <height>62</height>
+    <weight>120.6</weight>
+  </Alice>
+  <Freddie>
+    <id>2</id>
+    <name>Freddie</name>
+    <age>21</age>
+    <height>74</height>
+    <weight>190.6</weight>
+  </Freddie>
+  <Bob>
+    <id>3</id>
+    <name>Bob</name>
+    <age>17</age>
+    <height>68</height>
+    <weight>120.0</weight>
+  </Bob>
+</Student_Data>
+```
