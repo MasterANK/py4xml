@@ -128,7 +128,7 @@ def extend_xml(data, write_f):      #Extend an extensible file
     dict_write_xml(file.root_element,file_data,write_f)
 
 
-def csv_to_xml(root_element,csv_f,key,xml_f):
+def csv_to_xml(root_element,csv_f,key,xml_f):       #Convert CSV -> Dict
     csv_data = csv.DictReader(csv_f)
     data = {}
     for i in csv_data:
