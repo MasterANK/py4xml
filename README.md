@@ -185,7 +185,7 @@ dict_write_xml(root_element,data,f)
 
 #
 # ***Converting CSV to XML file***
-py4xml have a function called **csv_to_xml()** and it has four required parameter. This function is used to covert a csv file into an xml file.
+py4xml have a function called **csv_to_xml()** and it has four required parameter. This function is used to convert a csv file into an xml file.
 The first parameter is *root_element* which will accept the string to be written as root_element of the xml file. The secound parameter is *csv_f* which will be the csv file which will the hold data that needed to be converted. The third parameter is *key* which will be the column name and the value of the columnms will be used for elements tag. The fourth and last parameter is *xml_f* and it will be the xml file in which data should be written.
 
 *Note- The key should be unique so that two element tags would not conflict with each other. 
@@ -216,6 +216,10 @@ key = "name"
 
 #Calling the csv to xml function
 py4xml.csv_to_xml(root_element,csv_f,key,xml_f)
+
+#File Closing
+csv_f.close()
+xml_f.close()
 ```
 
 Output XML file (File Path:Tests\XML 4.xml ):
@@ -243,4 +247,66 @@ Output XML file (File Path:Tests\XML 4.xml ):
     <weight>120.0</weight>
   </Bob>
 </Student_Data>
+```
+
+#
+# ***Converting XML to CSV file***
+py4xml have a function called **xml_to_csv()** and it has two required parameter and one optional parameter. This function is used to convert a xml file into an csv file.
+The first parameter is *xml_f* which will be the xml file for input data. The secound parameter is *csv_f* in which the data should be written. The third parameter is *elementcol* which is optional as this will represent the column name for the element. If the column name is not given then the element tag will not be stored in the csv file.
+
+*Note- xml file must be opened in read mode. csv file must be opened in write mode and newline must be empty string to avoid the empty row bug of csv module.
+
+Example:
+
+XML file (File Path:Tests\XML 4.xml):
+```
+<Student_Data>
+  <Alice>
+    <name>Alice</name>
+    <id>1</id>
+    <age>20</age>
+    <height>62</height>
+    <weight>120.6</weight>
+  </Alice>
+  <Freddie>
+    <name>Freddie</name>
+    <id>2</id>
+    <age>21</age>
+    <height>74</height>
+    <weight>190.6</weight>
+  </Freddie>
+  <Bob>
+    <name>Bob</name>
+    <id>3</id>
+    <age>17</age>
+    <height>68</height>
+    <weight>120.0</weight>
+  </Bob>
+</Student_Data>
+```
+Code-
+```
+#XML file in read mode
+xml_f = open("Tests\XML 4.xml","r")
+
+#CSV file in write mode and newline should be empty string 
+csv_f = open("Tests\csv 1.csv","w",newline="")  
+             
+#elementcol is column name for element tag
+elementcol = "name"                             
+
+#Calling the xml to csv function
+py4xml.xml_to_csv(xml_f,csv_f,elementcol)
+
+#File Closing
+csv_f.close()
+xml_f.close()
+```
+Output CSV file (File Path:Tests\csv 1.csv): 
+```
+name,id,age,height,weight
+Alice,1,20,62,120.6
+Freddie,2,21,74,190.6
+Bob,3,17,68,120.0
+
 ```
