@@ -1,11 +1,12 @@
 import py4xml
 
 def test_main():
-    inp = int(input("""Enter 1 to show all record
-Enter 2 to search for a record by element
-Enter 3 to check if a record is present in the file
-Enter 4 to convert csv to xml file.
-Enter 5 to convert xml to csv file.
+    inp = int(input("""Enter 1 to show all record.
+Enter 2 to search for a record by element.
+Enter 3 to check if a record is present in the file.
+Enter 4 to extend data in the xml file.
+Enter 5 to convert csv to xml file.
+Enter 6 to convert xml to csv file.
 
 Enetr Choice: """))
     if inp == 1:
@@ -15,8 +16,10 @@ Enetr Choice: """))
     elif inp == 3:
         check_element()
     elif inp == 4:
-        convert_csv_xml() 
+        extend_file()
     elif inp == 5:
+        convert_csv_xml() 
+    elif inp == 6:
         convert_xml_csv()
 
 
@@ -51,6 +54,15 @@ def check_element():
         print("The element is present in the XML file")
     if not flag:
         print("Element is not present in the XML file")
+
+def extend_file():
+    data = {"Arceus":{"HP":100,"Defence":100,"Speed":100},
+    "Gratina":{"HP":99,"Defence":99,"Speed":99}}
+
+    write_f = open("Tests\XML 2.xml","r+")
+    py4xml.extend_xml(data,write_f)
+    
+    write_f.close()
 
 
 def convert_csv_xml():
