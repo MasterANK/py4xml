@@ -55,7 +55,7 @@ XML stands for extensible markdown language, An XML file is a file which is used
 
 #
 # ***What is Py4XML?***
-Py4xml is the module created in order to interpret these XML file in python using python just like csv module which interpret CSV or pickle modules which interpret Binary files. Py4xml has the ability to read and write an .xml file. Py4xml can also convert the xml file into csv file or SQL table. 
+Py4xml is the module created in order to interpret the XML file in python using python just like csv module which interpret CSV or pickle modules which interpret Binary files. Py4xml has the ability to read and write an .xml file. Py4xml can also convert the xml file into a csv file. 
 
 #
 # ***Installation***
@@ -94,7 +94,7 @@ print(xml_file.element_stack)
 ```
 
 ## 3. Getting the Dictionary of elements in xml file
-By accessing the **main_dict** variable in the xml file object returned by read_xml() function. It will return the **nested dictionary** of element where key will be elements and its value will be another dictionary where the key this time is sub element and its value will be the value of the sub element.
+By accessing the **main_dict** variable in the xml file object returned by read_xml() function. It will return the **nested dictionary** of elements where key will be elements and its value will be another dictionary where the key this time is a sub element and its value will be the value of the sub element.
 
 Sample Structure of the nested dictionary:
 
@@ -106,7 +106,7 @@ print(xml_file.main_dict)
 ```
 
 ## 4.  Getting the Dictionary of selected element in xml file
-By accessing the **find_element()** function in the xml file object returned by read_xml() function. It requires one required parameter which is the element you need to find in the xml file and it will return the **dictionary** of sub element of the supplied element.
+By accessing the **find_element()** function in the xml file object returned by read_xml() function. It requires one required parameter which is the element you need to find in the xml file and it will return the **dictionary** of the sub element of the supplied element.
 
 ```
 print(xml_file.find_element("element"))
@@ -115,7 +115,7 @@ print(xml_file.find_element("element"))
 
 #
 # ***Reading an XML File with Attributes***
-Although it is not recomended but xml file can sometimes have an attribute defined in the element tag. As shown in the example below-
+Although it is not recommended but xml file can sometimes have an attribute defined in the element tag. As shown in the example below-
 ```
 <messages>
   <note id="501">
@@ -134,7 +134,7 @@ Although it is not recomended but xml file can sometimes have an attribute defin
 ```
 in the given example, it can we concluded that id is category and is defined as *\<element category="Value">* 
 
-While iterating over such xml files with py4xml, the structure of main dictionary is slightly changed to accompany the category tag. The keys of the ***main_dict*** will be changed as ***element_value*** where value is the value of the category and a new sub_element will be added for category as ***\<Category_category\>Value\</Category_category\>*** 
+While iterating over such xml files with py4xml, the structure of the main dictionary is slightly changed to accompany the category tag. The keys of the ***main_dict*** will be changed as ***element_value*** where value is the value of the category and a new sub_element will be added for category as ***\<Category_category\>Value\</Category_category\>*** 
 
 Sample New Structure of the nested dictionary:
 
@@ -143,7 +143,7 @@ Sample New Structure of the nested dictionary:
 
 #
 # ***Writing Dictionary in XML File***
-Py4xml has a function called **dict_write_xml()** and it has 3 required parameters. The first parameter is for the *root_element* which will commonly be in string format. The secound parameter is *data* or the elements and sub_element which should be provided in the nested dictionary format as described below. The third and last parameter is the *write_f* or file_object where everything is supposed to be written. This functions dosen't return anything.
+Py4xml has a function called **dict_write_xml()** and it has 3 required parameters. The first parameter is for the *root_element* which will commonly be in string format. The secound parameter is *data* or the elements and sub_element which should be provided in the nested dictionary format as described below. The third and last parameter is the *write_f* or file_object where everything is supposed to be written. This function doesn't return anything.
 
 Sample Structure of the nested dictionary:
 
@@ -166,6 +166,8 @@ f = open("xml 2.xml","w") #Opening the file in write mode
 # dict_write_xml() will write the data in file
 dict_write_xml(root_element,data,f)
 
+#File Closing
+f.close()
 ```
 ### Output in File:
 ```
@@ -186,7 +188,7 @@ dict_write_xml(root_element,data,f)
 #
 # ***Extending an XML File***
 Py4xml have a function called ***extend_xml()*** which can be used to add data to the xml file. It has two required parameters. 
-The first parameter is *data* which will be in dictionary format and will contain the data that needed to be appended to the file. The secound parameter is *write_f* which will be the xml file where data needed to be added.
+The first parameter is *data* which will be in dictionary format and will contain the data that needs to be appended to the file. The secound parameter is *write_f* which will be the xml file where data needs to be added.
 
 *Note: the xml file must be opened in "r+" mode only
 
@@ -209,11 +211,11 @@ write_f.close()
 
 #
 # ***Converting CSV to XML file***
-py4xml have a function called **csv_to_xml()** and it has four required parameter. This function is used to convert a csv file into an xml file.
-The first parameter is *root_element* which will accept the string to be written as root_element of the xml file. The secound parameter is *csv_f* which will be the csv file which will the hold data that needed to be converted. The third parameter is *key* which will be the column name and the value of the columnms will be used for elements tag. The fourth and last parameter is *xml_f* and it will be the xml file in which data should be written.
+py4xml have a function called **csv_to_xml()** and it has four required parameters. This function is used to convert a csv file into an xml file.
+The first parameter is *root_element* which will accept the string to be written as root_element of the xml file. The secound parameter is *csv_f* which will be the csv file which will hold data that needs to be converted. The third parameter is the *key* which will be the column name and the value of the columns will be used for elements tag. The fourth and last parameter is *xml_f* and it will be the xml file in which data should be written.
 
 *Note- The key should be unique so that two element tags would not conflict with each other. 
-The csv file must be opened in read mode and xml file must be opend in write mode. 
+The csv file must be opened in read mode and the xml file must be opened in write mode. 
 
 ### Example:
 
@@ -275,10 +277,10 @@ Output XML file (File Path:Tests\XML 4.xml ):
 
 #
 # ***Converting XML to CSV file***
-py4xml have a function called **xml_to_csv()** and it has two required parameter and one optional parameter. This function is used to convert a xml file into an csv file.
+py4xml have a function called **xml_to_csv()** and it has two required parameters and one optional parameter. This function is used to convert a xml file into a csv file.
 The first parameter is *xml_f* which will be the xml file for input data. The secound parameter is *csv_f* in which the data should be written. The third parameter is *elementcol* which is optional as this will represent the column name for the element. If the column name is not given then the element tag will not be stored in the csv file.
 
-*Note- xml file must be opened in read mode. csv file must be opened in write mode and newline must be empty string to avoid the empty row bug of csv module.
+*Note- xml file must be opened in read mode. The csv file must be opened in write mode and newline must bean empty string to avoid the empty row bug of the csv module.
 
 ### Example:
 
