@@ -31,7 +31,7 @@ Enetr Choice: """))
 
 
 def open_xml():
-    f = open("Tests\XML 2.xml","r")
+    f = open("Tests\XML 3.xml","r")
     data = py4xml.read_xml(f)
     return data
 
