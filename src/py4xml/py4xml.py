@@ -43,8 +43,9 @@ PyPI : https://pypi.org/project/py4xml/
 def read_xml(f):
     data = f.readlines()
     xml_file = xml_reader()
-    element_flag = True
-    attribute_flag = False
+    element_flag = True     #Will be false if element found
+    attribute_flag = False  #Will be true if Attr found
+    header_flag = True      #Will be False if header found
 
     for i in data:
         if a := re.fullmatch(r"<(\w+)>",i.strip("\n")):         #Init Header Check
@@ -67,7 +68,7 @@ def read_xml(f):
         elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):      #Element with attributes check
             if header_flag != False:
                 raise XML_Definition_Error("Root Element not defined")
-
+            
             if element_flag:                                    #To resolve the Bug where tag closing error never occurs
                 element_flag = False
             else:
@@ -84,17 +85,20 @@ def read_xml(f):
         elif a:= re.fullmatch(r"<(\w+)>([^<>]+)</(\w+)>",i.strip()):        #Sub_elements Check + Closing
             if a.group(1) != a.group(3):
                 raise XML_Syntax_Error(a.group(1)+" is not closed properly")
+            if element_flag:
+                raise XML_Syntax_Error("Element is missing or not defined")
             xml_file.add_dict_value(element,a.group(1),a.group(2))
         
         elif a := re.fullmatch(r"</(\w+)>",i.strip()):          #Closing Root_Element,Element Check
             if attribute_flag:
                 if str(a.group(1))+"_"+str(value) == element:
                     attribute_flag = False
+                    element_flag = True
+            elif  a.group(1) == element:
+                element_flag = True 
 
             if a.group(1) == xml_file.root_element:
                 header_flag = True
-            if a.group(1) == element or not attribute_flag:
-                element_flag = True 
 
 
     if not header_flag:
