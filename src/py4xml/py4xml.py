@@ -48,38 +48,42 @@ def read_xml(f):
     header_flag = True      #Will be False if header found
 
     for i in data:
-        if a := re.fullmatch(r"<(\w+)>",i.strip("\n")):         #Init Header Check
-            header_flag = False
-            xml_file.root_element = a.group(1)
-
-        elif a := re.fullmatch(r"<(\w+)>",i.strip()):           #Element Check
-            if header_flag != False:
-                raise XML_Definition_Error("Root Element not defined")
-
-            if element_flag:                                    #To resolve the Bug where tag closing error never occurs
-                element_flag = False
+        if a := re.fullmatch(r"<(\w+)>",i.strip()):         #Init Header Check
+            if header_flag:
+                header_flag = False
+                xml_file.root_element = a.group(1)
             else:
-                raise XML_Syntax_Error(element+" is not closed properly")
+                if header_flag != False:
+                    raise XML_Definition_Error("Root Element not defined")
 
-            element = a.group(1)
-            xml_file.element_stacker(element)
-            xml_file.add_dict(element)
+                if element_flag:                                    #To resolve the Bug where tag closing error never occurs
+                    element_flag = False
+                else:
+                    raise XML_Syntax_Error(element+" is not closed properly")
+
+                element = a.group(1)
+                xml_file.element_stacker(element)
+                xml_file.add_dict(element)
         
         elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):      #Element with attributes check
-            if header_flag != False:
-                raise XML_Definition_Error("Root Element not defined")
-            
-            if element_flag:                                    #To resolve the Bug where tag closing error never occurs
-                element_flag = False
+            if header_flag:
+                header_flag = False
+                xml_file.root_element = a.group(1)
             else:
-                raise XML_Syntax_Error(element+" is not closed properly")
+                if header_flag != False:
+                    raise XML_Definition_Error("Root Element not defined")
+                
+                if element_flag:                                    #To resolve the Bug where tag closing error never occurs
+                    element_flag = False
+                else:
+                    raise XML_Syntax_Error(element+" is not closed properly")
 
-            attribute_flag = True    
-            value =  a.group(3)
-            element = str(a.group(1))+"_"+str(value) ; category = 'category'+'_'+str(a.group(2)) 
-            xml_file.element_stacker(element)
-            xml_file.add_dict(element)
-            xml_file.add_dict_value(element,category,value)
+                attribute_flag = True    
+                value =  a.group(3)
+                element = str(a.group(1))+"_"+str(value) ; category = 'category'+'_'+str(a.group(2)) 
+                xml_file.element_stacker(element)
+                xml_file.add_dict(element)
+                xml_file.add_dict_value(element,category,value)
 
 
         elif a:= re.fullmatch(r"<(\w+)>([^<>]+)</(\w+)>",i.strip()):        #Sub_elements Check + Closing
