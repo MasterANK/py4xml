@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: py4xml
-Version: 0.1.2
+Version: 1.0.1
 Summary: A python package to read, write or interpret the XML files.
 Home-page: https://github.com/MasterANK/py4xml
 Author: Ankit Aggarwal
