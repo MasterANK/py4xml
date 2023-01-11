@@ -77,6 +77,8 @@ xml_file = py4xml.read_xml(f) # it takes file_object and return xml object
 
 # Now with the help of multiple functions inside the xml object in xml_file we can extract the required data as shown in below example
 
+#File Closing
+f.close()
 ```
 ## 1. Getting reading the Root Element:
 By accessing the **root_element** variable in the xml file object returned by read_xml() function. It will return the **root_element**
