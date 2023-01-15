@@ -5,7 +5,10 @@ Else if you have forked it from github then leave the import statement or change
 try:
     import py4xml
 except :
-    import src.py4xml.py4xml as py4xml
+    try:
+        import src.py4xml.py4xml as py4xml
+    except:
+        raise ModuleNotFoundError("Error in importing the module")
 
 def test_main():
     inp = int(input("""Enter 1 to show all record.
