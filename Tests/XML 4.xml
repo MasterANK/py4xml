@@ -1,28 +1,28 @@
 <Student_Data>
   <Alice_Marry>
-    <name>Alice Marry</name>
     <id>1</id>
+    <name>Alice Marry</name>
     <age>20</age>
     <height>62</height>
     <weight>120.6</weight>
   </Alice_Marry>
   <Freddie>
-    <name>Freddie</name>
     <id>2</id>
+    <name>Freddie</name>
     <age>21</age>
     <height>74</height>
     <weight>190.6</weight>
   </Freddie>
   <Bob_Douglas>
-    <name>Bob Douglas</name>
     <id>3</id>
+    <name>Bob Douglas</name>
     <age>17</age>
     <height>68</height>
     <weight>120.0</weight>
   </Bob_Douglas>
   <Alice_Kate>
+    <id>4</id>
     <name>Alice Kate</name>
-    <id>1</id>
     <age>20</age>
     <height>62</height>
     <weight>120.6</weight>
