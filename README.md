@@ -16,7 +16,7 @@ XML stands for extensible markdown language, An XML file is a file which is used
 + XML is Extensible as XML applications will work as expected even if new data is added (or removed).
 
 ## Difference between XML and HTML
-| XML                               | HTML                           |
+| HTML                              | XML                            |
 | --------------------------------- | -------------------------------|
 |HTML tags are predefined tags.     | XML tags are user defined tags.|
 |HTML is not Case sensitive.        | 	XML is Case sensitive.       |

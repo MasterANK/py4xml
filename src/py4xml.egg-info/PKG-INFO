@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: py4xml
-Version: 1.0.1
+Version: 1.2.1
 Summary: A python package to read, write or interpret the XML files.
 Home-page: https://github.com/MasterANK/py4xml
 Author: Ankit Aggarwal
@@ -11,12 +11,14 @@ Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Classifier: Topic :: Text Processing :: Markup :: XML
-Requires-Python: >=3.8
+Requires-Python: >=3.6
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
 
 # **Py4XML**
+
+<img src="https://img.shields.io/badge/Version-V%201.2.1-blue?style=plastic"/> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MasterANK/py4xml?logo=python&logoColor=yellow&style=plastic">
 
 ### Author: Ankit Aggarwal (@MasterANK)
 ### Language Used : Python
@@ -94,6 +96,8 @@ xml_file = py4xml.read_xml(f) # it takes file_object and return xml object
 
 # Now with the help of multiple functions inside the xml object in xml_file we can extract the required data as shown in below example
 
+#File Closing
+f.close()
 ```
 ## 1. Getting reading the Root Element:
 By accessing the **root_element** variable in the xml file object returned by read_xml() function. It will return the **root_element**
@@ -239,9 +243,9 @@ The csv file must be opened in read mode and the xml file must be opened in writ
 csv file (File Path:Tests\csv 1.csv):
 ```
 id,name,age,height,weight
-1,Alice,20,62,120.6
+1,Alice Marry,20,62,120.6
 2,Freddie,21,74,190.6
-3,Bob,17,68,120.0
+3,Bob Douglas,17,68,120.0
 ```
 Code-
 ```
@@ -268,13 +272,13 @@ xml_f.close()
 Output XML file (File Path:Tests\XML 4.xml ):
 ```
 <Student_Data>
-  <Alice>
+  <Alice_Marry>
     <id>1</id>
-    <name>Alice</name>
+    <name>Alice Marry</name>
     <age>20</age>
     <height>62</height>
     <weight>120.6</weight>
-  </Alice>
+  </Alice_Marry>
   <Freddie>
     <id>2</id>
     <name>Freddie</name>
@@ -282,13 +286,13 @@ Output XML file (File Path:Tests\XML 4.xml ):
     <height>74</height>
     <weight>190.6</weight>
   </Freddie>
-  <Bob>
+  <Bob_Douglas>
     <id>3</id>
-    <name>Bob</name>
+    <name>Bob Douglas</name>
     <age>17</age>
     <height>68</height>
     <weight>120.0</weight>
-  </Bob>
+  </Bob_Douglas>
 </Student_Data>
 ```
 
@@ -351,7 +355,6 @@ name,id,age,height,weight
 Alice,1,20,62,120.6
 Freddie,2,21,74,190.6
 Bob,3,17,68,120.0
-
 ```
 
 #
