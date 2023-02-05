@@ -48,7 +48,11 @@ def read_xml(f):
     header_flag = True      #Will be False if header found
 
     for i in data:
-        if a := re.fullmatch(r"<(\w+)>",i.strip()):         #Init Header Check
+        a = re.fullmatch(r"<(\w+)>",i.strip())
+        b = re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip())
+        c = re.fullmatch(r"<(\w+)>([^<>]+)</(\w+)>",i.strip())
+        d = re.fullmatch(r"</(\w+)>",i.strip())
+        if a:                                                       #Init Header Check
             if header_flag:
                 header_flag = False
                 xml_file.root_element = a.group(1)
@@ -65,10 +69,10 @@ def read_xml(f):
                 xml_file.element_stacker(element)
                 xml_file.add_dict(element)
         
-        elif a:= re.fullmatch(r"<(\w+) (\w+)=[\"|\']([^<>]+)[\"|\']>", i.strip()):      #Element with attributes check
+        elif b:                                                     #Element with attributes check
             if header_flag:
                 header_flag = False
-                xml_file.root_element = a.group(1)
+                xml_file.root_element = b.group(1)
             else:
                 if header_flag != False:
                     raise XML_Definition_Error("Root Element not defined")
@@ -79,29 +83,29 @@ def read_xml(f):
                     raise XML_Syntax_Error(element+" is not closed properly")
 
                 attribute_flag = True    
-                value =  a.group(3)
-                element = str(a.group(1))+"_"+str(value) ; category = 'category'+'_'+str(a.group(2)) 
+                value =  b.group(3)
+                element = str(b.group(1))+"_"+str(value) ; category = 'category'+'_'+str(b.group(2)) 
                 xml_file.element_stacker(element)
                 xml_file.add_dict(element)
                 xml_file.add_dict_value(element,category,value)
 
 
-        elif a:= re.fullmatch(r"<(\w+)>([^<>]+)</(\w+)>",i.strip()):        #Sub_elements Check + Closing
-            if a.group(1) != a.group(3):
-                raise XML_Syntax_Error(a.group(1)+" is not closed properly")
+        elif c:                                                      #Sub_elements Check + Closing
+            if c.group(1) != c.group(3):
+                raise XML_Syntax_Error(c.group(1)+" is not closed properly")
             if element_flag:
                 raise XML_Syntax_Error("Element is missing or not defined")
-            xml_file.add_dict_value(element,a.group(1),a.group(2))
+            xml_file.add_dict_value(element,c.group(1),c.group(2))
         
-        elif a := re.fullmatch(r"</(\w+)>",i.strip()):          #Closing Root_Element,Element Check
+        elif d:                                                      #Closing Root_Element,Element Check
             if attribute_flag:
-                if str(a.group(1))+"_"+str(value) == element:
+                if str(d.group(1))+"_"+str(value) == element:
                     attribute_flag = False
                     element_flag = True
-            elif  a.group(1) == element:
+            elif  d.group(1) == element:
                 element_flag = True 
 
-            if a.group(1) == xml_file.root_element:
+            if d.group(1) == xml_file.root_element:
                 header_flag = True
 
 
