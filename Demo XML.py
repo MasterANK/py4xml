@@ -34,7 +34,7 @@ Enetr Choice: """))
 
 
 def open_xml():
-    f = open("Tests\XML 3.xml","r")
+    f = open("Tests\XML 2.xml","r")
     data = py4xml.read_xml(f)
     f.close()
     return data
@@ -51,9 +51,12 @@ def element_search():
     var = input("\nEnter Element: ")
     file = open_xml()
     data = file.find_element(var)
-    print(var+"-")
-    for i in data:
-        print("  ",i,":",data[i])
+    if data:
+        print(var+"-")
+        for i in data:
+            print("  ",i,":",data[i])
+    else:
+        print(var+" Not Found")
 
 def check_element():
     var = input("\nEnter Element: ")
