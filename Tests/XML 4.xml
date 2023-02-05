@@ -1,11 +1,11 @@
 <Student_Data>
-  <Alice>
-    <name>Alice</name>
+  <Alice_Marry>
+    <name>Alice Marry</name>
     <id>1</id>
     <age>20</age>
     <height>62</height>
     <weight>120.6</weight>
-  </Alice>
+  </Alice_Marry>
   <Freddie>
     <name>Freddie</name>
     <id>2</id>
@@ -13,11 +13,18 @@
     <height>74</height>
     <weight>190.6</weight>
   </Freddie>
-  <Bob>
-    <name>Bob</name>
+  <Bob_Douglas>
+    <name>Bob Douglas</name>
     <id>3</id>
     <age>17</age>
     <height>68</height>
     <weight>120.0</weight>
-  </Bob>
+  </Bob_Douglas>
+  <Alice_Kate>
+    <name>Alice Kate</name>
+    <id>1</id>
+    <age>20</age>
+    <height>62</height>
+    <weight>120.6</weight>
+  </Alice_Kate>
 </Student_Data>

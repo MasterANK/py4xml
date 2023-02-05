@@ -143,11 +143,17 @@ def extend_xml(data, write_f):      #Extend an extensible file
 
 def csv_to_xml(root_element,csv_f,key,xml_f):       #Convert CSV -> Dict -> XML
     csv_data = csv.DictReader(csv_f)
+    holder_data = {}
     data = {}
     for i in csv_data:
         for j in i:
             if j == str(key):
-                data[i[j]] = i
+                if i[j].isidentifier():
+                    data[i[j]] = i
+                else:
+                    holder_data = i.copy()
+                    i[j] = re.sub(r"[^a-zA-Z0-9\._\-]","_",i[j])
+                    data[i[j]] = holder_data
     dict_write_xml(root_element,data,xml_f)
 
 
