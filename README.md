@@ -1,7 +1,7 @@
 
 # **Py4XML**
 
-<img src="https://img.shields.io/badge/Version-V%201.0.1-blue?style=plastic"/> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MasterANK/py4xml?logo=python&logoColor=yellow&style=plastic">
+<img src="https://img.shields.io/badge/Version-V%201.2.1-blue?style=plastic"/> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MasterANK/py4xml?logo=python&logoColor=yellow&style=plastic">
 
 ### Author: Ankit Aggarwal (@MasterANK)
 ### Language Used : Python
@@ -226,9 +226,9 @@ The csv file must be opened in read mode and the xml file must be opened in writ
 csv file (File Path:Tests\csv 1.csv):
 ```
 id,name,age,height,weight
-1,Alice,20,62,120.6
+1,Alice Marry,20,62,120.6
 2,Freddie,21,74,190.6
-3,Bob,17,68,120.0
+3,Bob Douglas,17,68,120.0
 ```
 Code-
 ```
@@ -255,13 +255,13 @@ xml_f.close()
 Output XML file (File Path:Tests\XML 4.xml ):
 ```
 <Student_Data>
-  <Alice>
+  <Alice_Marry>
     <id>1</id>
-    <name>Alice</name>
+    <name>Alice Marry</name>
     <age>20</age>
     <height>62</height>
     <weight>120.6</weight>
-  </Alice>
+  </Alice_Marry>
   <Freddie>
     <id>2</id>
     <name>Freddie</name>
@@ -269,13 +269,13 @@ Output XML file (File Path:Tests\XML 4.xml ):
     <height>74</height>
     <weight>190.6</weight>
   </Freddie>
-  <Bob>
+  <Bob_Douglas>
     <id>3</id>
-    <name>Bob</name>
+    <name>Bob Douglas</name>
     <age>17</age>
     <height>68</height>
     <weight>120.0</weight>
-  </Bob>
+  </Bob_Douglas>
 </Student_Data>
 ```
 
@@ -338,7 +338,6 @@ name,id,age,height,weight
 Alice,1,20,62,120.6
 Freddie,2,21,74,190.6
 Bob,3,17,68,120.0
-
 ```
 
 #
