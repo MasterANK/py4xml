@@ -3,7 +3,7 @@
 
 <img src="https://img.shields.io/badge/Version-V%201.2.1-blue?style=plastic"/> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/MasterANK/py4xml?logo=python&logoColor=yellow&style=plastic">
 
-### Author: Ankit Aggarwal (@MasterANK)
+### Author: Ankit Aggarwal ([@MasterANK](https://github.com/MasterANK))
 ### Language Used : Python
 ### Github Link : [Py4XML Github](https://github.com/MasterANK/py4xml/tree/main)
 #
